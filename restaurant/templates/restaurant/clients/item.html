@@ -1,0 +1,54 @@
+{% extends 'restaurant/clients/base_template.html' %}
+{% block page_title %}
+<button class="btn btn-info" onclick="window.location.href='add/'">Add New Item</button>
+{% endblock page_title %}
+{% block main_content %}
+{%load static%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+        </div>
+        </div>
+        <div class="content">
+          <div class="row"> 
+              <table class="table table-dark table-striped"> 
+                <thead> 
+                  <tr> 
+                    <th>ID</th>   
+                    <th>Name</th> 
+                    <th>price</th> 
+                    <th>Logo</th>
+                    <th>Discount Percentage</th>   
+                    <th>Branch_id</th> 
+                    <th>is_any_discount</th> 
+                    <th>is_size</th> 
+                    <th>Created_at</th> 
+                    <th>Actions</th>
+                  </tr> 
+                </thead> 
+                <tbody> 
+                {% for row in object_list %} 
+                  <tr>
+                    <td>{{row.id}}</td>  
+                    <td>{{row.item_name}}</td> 
+                    <td>{{row.price}}</td> 
+                    <td><img src="{% static row.logo.url %}" width="100"></td> 
+                    <td>{{row.disc_percent}}</td>  
+                    <td>{{row.branch_id}}</td> 
+                    <td>{{row.is_any_discount}}</td> 
+                    <td>{{row.is_size}}</td> 
+                    <td>{{row.created_at}}</td> 
+                    <td><a href="edit/{{row.id}}">Edit</a>
+                       <a href="delete/{{row.id}}">Delete</a></td>
+                  </tr> 
+                {% endfor %} 
+                </tbody> 
+              </table> 
+            </div> 
+  
+      </div>
+  
+    </div><!-- /.container-fluid -->
+</section>
+{% endblock main_content %}

@@ -1,0 +1,61 @@
+{% extends 'restaurant/clients/base_template.html' %}
+{% block page_title %}
+Add Discount 
+{% endblock page_title %}
+{% block main_content %}
+{%load static%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                    <h3 class="card-title">Discount</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="{{ request.get_full_path }}" method="POST" class="form-row d-block" enctype="multipart/form-data" role="form">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group">
+                        {% if form.discription.errors %}
+                            {% for err_discription in form.discription.errors %}
+                                <p>Discription 
+                                    {{err_discription | escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                            <div class="form-group">
+                            {% if form.dis_percent.errors %}
+                                {% for err_dis_percent in form.dis_percent.errors %}
+                                    <p>dis_percent 
+                                        {{err_dis_percent | escape}}</p>
+                                {% endfor %}
+                            {% endif %}
+                            </div>
+                        <div class="form-group">
+                            {% if form.errors %}
+                                {% for errors in form.non_field_errors %}
+                                    <p>{{errors | escape}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        {% for f in form %}
+                            <div class="form-group">
+                                {{f.label_tag}}
+                                {{f}}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main_content %}

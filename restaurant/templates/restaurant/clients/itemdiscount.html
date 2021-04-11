@@ -1,0 +1,44 @@
+{% extends 'restaurant/clients/base_template.html' %}
+{% block page_title %}
+<button class="btn btn-info" onclick="window.location.href='add/'">Add New Item Discount</button>
+{% endblock page_title %}
+{% block main_content %}
+{%load static%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+        </div>
+        </div>
+        <div class="content">
+          <div class="row"> 
+              <table class="table table-dark table-striped"> 
+                <thead> 
+                  <tr> 
+                    <th>ID</th>   
+                    <th>Item ID</th> 
+                    <th>Is_other_discount</th> 
+                    <th>Is_MC_discount</th> 
+                    <th>Created_at</th> 
+                    <th>Actions</th>
+                  </tr> 
+                </thead> 
+                <tbody> 
+                {% for row in object_list %} 
+                  <tr>
+                    <td>{{row.id}}</td>  
+                    <td>{{row.item_id}}</td> 
+                    <td>{{row.is_other_discount}}</td> 
+                    <td>{{row.is_mc_discount}}</td> 
+                    <td>{{row.created_at}}</td> 
+                    <td><a href="edit/{{row.id}}">Edit</a>
+                       <a href="delete/{{row.id}}">Delete</a></td>
+                  </tr> 
+                {% endfor %} 
+                </tbody> 
+              </table> 
+            </div> 
+      </div>
+    </div><!-- /.container-fluid -->
+</section>
+{% endblock main_content %}

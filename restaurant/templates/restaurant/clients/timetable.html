@@ -1,0 +1,48 @@
+{% extends 'restaurant/clients/base_template.html' %}
+{% block page_title %}
+<button class="btn btn-info" onclick="window.location.href='add/'">Add New Timetable</button>
+{% endblock page_title %}
+{% block main_content %}
+{%load static%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+        </div>
+        </div>
+        <div class="content">
+          <div class="row"> 
+              <table class="table table-dark table-striped"> 
+                <thead> 
+                  <tr> 
+                    <th>ID</th>   
+                    <th>Branch ID</th> 
+                    <th>Day</th> 
+                    <th>Start Time</th> 
+                    <th>End Time</th>   
+                    <th>Created_at</th> 
+                    <th>Actions</th>
+                  </tr> 
+                </thead> 
+                <tbody> 
+                {% for row in object_list %} 
+                  <tr>
+                    <td>{{row.id}}</td>  
+                    <td>{{row.branch_id}}</td> 
+                    <td>{{row.day}}</td> 
+                    <td>{{row.start_time}}</td>  
+                    <td>{{row.end_time}}</td> 
+                    <td>{{row.created_at}}</td>  
+                    <td><a href="edit/{{row.id}}">Edit</a>
+                       <a href="delete/{{row.id}}">Delete</a></td>
+                  </tr> 
+                {% endfor %} 
+                </tbody> 
+              </table> 
+            </div> 
+  
+      </div>
+  
+    </div><!-- /.container-fluid -->
+</section>
+{% endblock main_content %}

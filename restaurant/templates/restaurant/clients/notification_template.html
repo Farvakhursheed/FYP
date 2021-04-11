@@ -1,0 +1,11 @@
+{% load static %}
+<ul class="navbar-nav ml-auto">
+  <div class="container d-flex justify-content-between">
+    <div class="languages">
+      {% if user.is_authenticated %}
+          <p class="pt-3">Logged in as <strong>{{ user.username }}</strong>. <a href="{% url 'logout' %}">Log out</a>.</p>
+      {% else %}
+      {% endif %}
+    </div>
+  </div>
+  </ul>

@@ -1,0 +1,76 @@
+{% extends 'restaurant/clients/base_template.html' %}
+{% block page_title %}
+Add Restaurant Branch
+{% endblock page_title %}
+{% block main_content %}
+{%load static%}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                    <h3 class="card-title">Restaurant Branch</h3>
+                    </div>
+                    <form action="{{ request.get_full_path }}" method="POST" class="form-row d-block" enctype="multipart/form-data" role="form">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="form-group">
+                            {% if form.name.errors %}
+                                {% for err_name in form.name.errors %}
+                                    <p>Name 
+                                        {{err_name | escape}}</p>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                        {% if form.location.errors %}
+                            {% for err_location in form.location.errors %}
+                                <p>Logo 
+                                    {{err_location | escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        <div class="form-group">
+                        {% if form.is_dine_in.errors %}
+                            {% for err_is_dine_in in form.is_dine_in.errors %}
+                                <p>Logo 
+                                    {{err_is_dine_in | escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        <div class="form-group">
+                        {% if form.is_take_away.errors %}
+                            {% for err_is_take_away in form.is_take_away.errors %}
+                                <p>Logo 
+                                    {{err_is_take_away | escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        <div class="form-group">
+                        {% if form.is_delivery.errors %}
+                            {% for err_is_delivery in form.is_delivery.errors %}
+                                <p>Logo 
+                                    {{err_is_delivery| escape}}</p>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                        {% for f in form %}
+                            <div class="form-group">
+                                {{f.label_tag}}
+                                {{f}}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock main_content %}

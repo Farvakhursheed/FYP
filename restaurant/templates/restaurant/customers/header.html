@@ -1,0 +1,17 @@
+<div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+      <div class="contact-info">
+        <i class="icofont-phone"></i> +92 309 5643890
+        <span class="d-none d-lg-inline-block"><i class="icofont-clock-time icofont-rotate-180"></i> Monday-Sunday</span>
+      </div>
+      <div class="languages">
+        {% if user.is_authenticated %}
+        <ul>
+          <strong>Welcome {{ user.username }} | </strong><li><a href="{% url 'logout' %}"> Logout</a></li>
+        </ul>
+        {% else %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
