@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from ..decorators import customer_required
 from django.contrib.auth.decorators import login_required
-from ..ml import sentimental
+#from ..ml import sentimental
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -33,10 +33,10 @@ def restaurant(request):
     return render(request,"restaurant/customers/restaurant.html",{"branchmodel":branch,"timemodel":time})
 
 #Restaurant Comment Box
-def sentimental_analysis(request):
-    if request.method == 'POST':
-        form = RestCommentBoxForm(request.POST)
-        analyse = sentimental()
+#def sentimental_analysis(request):
+#    if request.method == 'POST':
+#        form = RestCommentBoxForm(request.POST)
+#        analyse = sentimental()
 
 
 @method_decorator([login_required, customer_required], name='dispatch')
