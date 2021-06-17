@@ -43,6 +43,9 @@ class Restaurant(models.Model):
     title = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     logo = models.FileField(upload_to="restaurants/",null=True)	
+    total_comments = models.IntegerField(default=0)
+    good_comments = models.IntegerField(default=0)
+    total_rating = models.FloatField(max_length=4, default=0.0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects=models.Manager()
@@ -63,6 +66,7 @@ class RestCommentBox(models.Model):
     item_Comment = models.TextField(max_length=2555)
     is_good = models.BooleanField(null=True)
     cust_id = models.ForeignKey(User,related_name="restcomment", on_delete=models.CASCADE)
+    rating = models.TextField(max_length=100, null=True)
     objects=models.Manager()
 
     def __str__(self):
@@ -107,6 +111,9 @@ class Item(models.Model):
     branch_id = models.ForeignKey(RestBranch, on_delete=models.CASCADE)
     price = models.IntegerField(default='')
     disc_percent = models.CharField(max_length=5)
+    total_comments = models.IntegerField(default=0)
+    good_comments = models.IntegerField(default=0)
+    total_rating = models.FloatField(max_length=4, default=0.0)
     logo = models.FileField(upload_to="items/",null=True)	
     is_any_discount = models.BooleanField(null=True)
     is_size = models.BooleanField(null=True)
@@ -129,6 +136,7 @@ class ItemCommentBox(models.Model):
     item_comment = models.TextField(max_length=2555)
     is_good = models.BooleanField(null=True)
     cust_id = models.ForeignKey(User,related_name="itemcomment", on_delete=models.CASCADE)
+    rating = models.TextField(max_length=100, null=True)
     objects=models.Manager()
 
     def __str__(self):
@@ -184,6 +192,9 @@ class Deal(models.Model):
     deal_name = models.CharField(max_length=255,default='')
     branch_id = models.ForeignKey(RestBranch, on_delete=models.CASCADE)
     price = models.IntegerField(default='')
+    total_comments = models.IntegerField(default=0)
+    good_comments = models.IntegerField( default=0)
+    total_rating = models.FloatField(max_length=5.0, default=0.0)
     discount_price = models.IntegerField(default='')
     logo = models.FileField(upload_to="deals/",null=True)	
     created_at = models.DateTimeField(auto_now_add=True)
@@ -205,6 +216,7 @@ class DealCommentBox(models.Model):
     item_comment = models.TextField(max_length=2555)
     is_good = models.BooleanField(null=True)
     cust_id = models.ForeignKey(User,related_name="dealcomment", on_delete=models.CASCADE)
+    rating = models.TextField(max_length=100, null=True)
     objects=models.Manager()
 
     def __str__(self):
