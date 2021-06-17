@@ -8,6 +8,7 @@ from django.utils.decorators import method_decorator
 from ..decorators import customer_required
 from django.contrib.auth.decorators import login_required
 
+
 class CustomerSignUpView(CreateView):
     model = User
     form_class = CustomerSignUpForm
@@ -35,9 +36,16 @@ def search(request):
     if(request.method == 'POST'):
         getData = Restaurant.objects.filter(title = request.POST.get('search'))
         return render(request,'restaurant/customers/restaurant.html',{'restmodel': getData})
-
+      
     getData = Restaurant.objects.all()
     return render(request,'restaurant/customers/restaurant.html',{'restmodel': getData})
+=======
+#Restaurant Comment Box
+#def sentimental_analysis(request):
+#    if request.method == 'POST':
+#        form = RestCommentBoxForm(request.POST)
+#        analyse = sentimental()
+
 
 
 @method_decorator([login_required, customer_required], name='dispatch')
@@ -142,6 +150,7 @@ class AddMCDiscountCommentBox(CreateView):
     form_class = MCDiscountCommentBoxForm
     template_name = 'restaurant/customers/mc_comment_box.html'
     success_url = "/"
+
 
 def view_branches(request):
     rec = RestBranch.objects.filter(rid_id=request.GET.get('id'))
