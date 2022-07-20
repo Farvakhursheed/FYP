@@ -8,6 +8,8 @@
     <title>Meal Catcher</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="{% static 'assets/img/mealcatcher.jpg' %}" rel="icon">
+
     <!-- Favicons -->
     <!--<link href="{% static 'pages/img/favicon.png' %}" rel="icon">
     <link href="{% static 'pages/img/apple-touch-icon.png' %}" rel="apple-touch-icon">-->
@@ -78,9 +80,6 @@
           </div>
           <div class="menu-ingredients">
             {{row.item_comment}}
-          </div>
-          <div class="menu-ingredients">
-            Good: {{row.is_good}}
           </div>
           <div class="menu-ingredients">
             {{row.cust_id}}

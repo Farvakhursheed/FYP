@@ -8,6 +8,8 @@
     <title>Meal Catcher</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <link href="{% static 'assets/img/mealcatcher.jpg' %}" rel="icon">
+
     <!-- Favicons -->
     <!--<link href="{% static 'pages/img/favicon.png' %}" rel="icon">
     <link href="{% static 'pages/img/apple-touch-icon.png' %}" rel="apple-touch-icon">-->
@@ -45,7 +47,7 @@
           <li><a href="">Items</a></li>
           <li><a href="/customers/deal/">Deal</a></li>
           <li><a href="/customers/platform/">Platform Deal</a></li>
-          <li><a href="#contact">Meal Catcher Discount</a></li>
+          <li><a href="/customers/mc/">Meal Catcher Discount</a></li>
           <li class="book-a-table text-center"><a href="/customers/restaurant/">View Restaurants</a></li>
         </ul>
       </nav><!-- .nav-menu -->
@@ -64,15 +66,12 @@
       <div class="section-title">
         <h2>Items</h2>
         <p>Check The Items</p>
-        <a href="item_comment/">View Comments</a>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
         <div class="col-lg-12 d-flex justify-content-center">
           <ul id="menu-flters">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-specialty">Timings</li>
-            <li><a scr=""></a>Items</li>
           </ul>
         </div>
       </div>
@@ -81,8 +80,8 @@
         <div class="col-lg-6 menu-item" > 
           <img src="{% static item.logo.url %}" class="menu-img"  width="100" alt="">
           <div class="menu-content">
-            <a href="#">{{item.branch_id.rid}}</a>
             <a href="#">{{item.item_name}}</a>
+            <span>{{item.branch_id.rid}}</span>
           </div>
           <div class="menu-ingredients">
             {{item.branch_id}}

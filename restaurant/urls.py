@@ -4,10 +4,21 @@ from restaurant.views import restaurant,clients,customers
 urlpatterns = [
     path('', restaurant.home, name='home'),
     #path('restaurant/', customers.RestaurantView.as_view(), name='restaurant'),
-   
+
+    path('customers/restaurant/pass_id/', customers.pass_id),
+
+    path('customers/restaurant/comments/', customers.view_comments),
+
+    path('customers/restaurant/comments/add_comments/' ,customers.pass_id),
+
+    path('customers/restaurant/comments/add_comments_item/' ,customers.pass_id_deal_items),
+
+    path('customers/restaurant/comments/add_comments_deal/' ,customers.pass_id_deal_items),
+
     path('clients/', include(([
         path('', clients.DemoView.as_view(), name='home_content'),
         path('calendar/', clients.CalendarView.as_view(), name='calender'),
+
 
         path('restaurant/', clients.ShowRestaurant.as_view(), name='restaurant'),
         path('restaurant/add/', clients.AddRestaurant.as_view(), name='restaurant.add'),
@@ -93,15 +104,25 @@ urlpatterns = [
         path('deal/',customers.deal, name="deal"),
         path('platform/',customers.platform, name="platform"),
         path('mc/',customers.mc,name="meal_catcher"),
+        path('restaurant/search/',customers.search,name="search"),
+        #path('restaurant/view/',customers.view, name="view"),
+        path('restaurant/view', customers.view_branches),
+        path('restaurant/details', customers.view_branche_details),
+
 
         path('restaurant/restaurant_comment/', customers.ShowRestCommentBox.as_view(), name='rest_comment_box'),
-        path('restaurant/restaurant_comment/add/', customers.AddRestCommentBox.as_view(), name='rest_comment_box.add'),
+        path('restaurant/restaurant_comment/add/', customers.AddRestCommentBox ),
+
+        path('restaurant/restaurant_comment/add_item_comment/', customers.AddItemCommentBox ),
+
+        path('restaurant/restaurant_comment/add_deal_comment/', customers.AddDealCommentBox ),
+
+
+        # path('item/item_comment/', customers.ShowItemCommentBox.as_view(), name='item_comment_box'),
+        # path('item/item_comment/add/', customers.AddItemCommentBox.as_view(), name='item_comment_box.add'),
         
-        path('item/item_comment/', customers.ShowItemCommentBox.as_view(), name='item_comment_box'),
-        path('item/item_comment/add/', customers.AddItemCommentBox.as_view(), name='item_comment_box.add'),
-        
-        path('deal/deal_comment/', customers.ShowDealCommentBox.as_view(), name='deal_comment_box'),
-        path('deal/deal_comment/add/', customers.AddDealCommentBox.as_view(), name='deal_comment_box.add'),
+        # path('deal/deal_comment/', customers.ShowDealCommentBox.as_view(), name='deal_comment_box'),
+        # path('deal/deal_comment/add/', customers.AddDealCommentBox.as_view(), name='deal_comment_box.add'),
         
         path('platform/platform_comment/', customers.ShowPlatformCommentBox.as_view(), name='platform_discount_box'),
         path('platform/platform_comment/add/', customers.AddPlatformCommentBox.as_view(), name='platform_discount_box.add'),

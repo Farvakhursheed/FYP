@@ -51,34 +51,23 @@
         <p>Add Comment</p>
       </div>
 
-      <form action="{{ request.get_full_path }}" method="POST" role="form" class="php-email-form aos-init aos-animate" class="form-row d-block" data-aos="fade-up" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="card-body">
-          <div class="">
-            {% if form.rest_Comment.errors %}
-              {% for err_rest_Comment in form.rest_Comment.errors %}
-                  <p>rest_Comment 
-                      {{err_rest_Comment | escape}}</p>
-              {% endfor %}
-          {% endif %}
-           </div>
-          <div >
-            {% if form.is_good.errors %}
-              {% for err_is_good in form.is_good.errors %}
-                  <p>is_good 
-                      {{err_is_good | escape}}</p>
-              {% endfor %}
-          {% endif %}  
+      <form method="POST" action="/customers/restaurant/restaurant_comment/add/">
+  
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            {% csrf_token %}
           </div>
-          {% for f in form %}
-            <div class="form-group">
-                {{f.label_tag}}
-                  {{f}}
-            </div>
-          {% endfor %}
         </div>
-        <div class="text-center"><button type="submit">Add Comment</button></div>
-      </form>
+    
+        <div class="form-group">
+          <label for="comment">Write Comment</label>
+          <input name="item_Comment" type="text" class="form-control" id="item_Comment" aria-describedby="emailHelp" placeholder="Enter Comment">
+          <input type="hidden" value={{id}} id="id" name="id">
+        </div>
+        <br>
+        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
 
     </div>
   </section>

@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,12 +78,16 @@ WSGI_APPLICATION = 'fyp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mealcatcher',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-
+#<<<<<<< master
+        'NAME': BASE_DIR / 'db.sqlite3',
+#=======
+#        'NAME': 'mealcatcher',
+#        'USER': 'root',
+#        'PASSWORD': '',
+#        'HOST': '127.0.0.1',
+#        'PORT': '3306'
+#
+#>>>>>>> main
     }
 }
 
@@ -106,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -131,7 +134,6 @@ STATICFILES_DIRS = [
 ]
 MEDIA_ROOT = 'static'
 AUTH_USER_MODEL = 'restaurant.User'
-
 
 LOGIN_URL = 'login'
 
